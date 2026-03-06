@@ -9,8 +9,8 @@ services:
       POSTGRES_DB: keycloak
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: keycloak_pwd
-    ports:
-      - "5441:5432"
+    # ports:
+    #   - "5441:5432"
     volumes:
       - kc_pgdata:/var/lib/postgresql/data
     networks:
@@ -22,7 +22,7 @@ services:
     restart: always
     depends_on:
       - kc-postgres
-    command: start-dev
+    command: start
     environment:
       KC_DB: postgres
       KC_DB_URL: jdbc:postgresql://kc-postgres:5432/keycloak
@@ -33,17 +33,16 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin123
 
       KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME: micropc-keycloak.duckdns.org
       KC_HOSTNAME_STRICT: "false"
-      KC_HOSTNAME_STRICT_HTTPS: "false"
-      KC_PROXY: "edge"
-      KC_HOSTNAME_URL: micropc-keycloak.duckdns.org
+      KC_PROXY_HEADERS: xforwarded
 
       # Disable theme caching for development
       KC_SPI_THEME_STATIC_MAX_AGE: "-1"
       KC_SPI_THEME_CACHE_THEMES: "false"
       KC_SPI_THEME_CACHE_TEMPLATES: "false"
-    ports:
-      - "8080:8080"
+    # ports:
+    #   - "8080:8080"
     volumes:
       - ./themes/MicroPC:/opt/keycloak/themes/MicroPC
     networks:
