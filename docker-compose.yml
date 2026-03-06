@@ -35,6 +35,8 @@ services:
       KC_HTTP_ENABLED: "true"
       KC_HOSTNAME_STRICT: "false"
       KC_HOSTNAME_STRICT_HTTPS: "false"
+      KC_PROXY: "edge"
+      KC_HOSTNAME_URL: "http://20.198.243.176:8080"
 
       # Disable theme caching for development
       KC_SPI_THEME_STATIC_MAX_AGE: "-1"
