@@ -43,7 +43,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ../fe/KeycloakTheme/MicroPC:/opt/keycloak/themes/MicroPC
+      - ./themes/MicroPC:/opt/keycloak/themes/MicroPC
     networks:
       - kc-net
 
